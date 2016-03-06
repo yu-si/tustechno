@@ -4,6 +4,8 @@
 #
 #
 #
+from repository.session.Cache import Cache
+
 
 class HippocampusRepository:
 
@@ -20,6 +22,9 @@ class HippocampusRepository:
         print "Commit to memory;" + str(len(storage))
         print storage
         #print dir(self.localStorage)
+        ins = Cache()
+
+        print ins
 
     def find(self):
         return self.localStorage
