@@ -16,5 +16,16 @@ class Brain:
 
     @staticmethod
     def recept(trasmitter):
-        print trasmitter
+        info = trasmitter.info
+        # save
+        hippocampus = Hippocampus
+        hippocampus.save(info)
+
+        # execute Frontal lobe ,Parietal and Occipital Lobe function
+
+
+    @classmethod
+    def confrim(self):
+        true
+
 
