@@ -4,8 +4,8 @@
 #
 #
 #
-from repository.session.Cache import Cache
 
+from repository.session.Cache import Cache
 
 class HippocampusRepository:
 
@@ -15,16 +15,14 @@ class HippocampusRepository:
         self.seq = 0
 
     def save(self, info):
-        storage = self.localStorage
+        print "Neurotransmitter;"
+        print info
 
-        storage = storage + info
-        print
+        ins = Cache()
+        storage = ins.storage
+        storage.append(info)
         print "Commit to memory;" + str(len(storage))
         print storage
-        #print dir(self.localStorage)
-        ins = Cache()
-
-        print ins
 
     def find(self):
         return self.localStorage

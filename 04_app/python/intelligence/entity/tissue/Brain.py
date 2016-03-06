@@ -17,11 +17,19 @@ class Brain:
     @staticmethod
     def recept(trasmitter):
         info = trasmitter.info
+
         # save
         hippocampus = Hippocampus
         hippocampus.save(info)
 
-        # execute Frontal lobe ,Parietal and Occipital Lobe function
+        # execute Occipital,Parietal and Frontal Lobe function
+        # Occipital Lobe View
+        occipitalLobe = OccipitalLobe.OccipitalLobe()
+        occipitalLobe.execute()
+
+        # Parietal Lobe Sentiment
+
+        # Frontal lobe Control
 
 
     @classmethod

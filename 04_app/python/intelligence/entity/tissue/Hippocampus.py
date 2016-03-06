@@ -4,6 +4,7 @@
 #
 #
 from repository.HippocampusRepository import HippocampusRepository
+from service import Logger
 
 
 class Hippocampus:
@@ -16,6 +17,9 @@ class Hippocampus:
         repository = HippocampusRepository()
         repository.save(info)
 
+        # output logs
+        logger = Logger.Logger()
+        logger.output(info)
 
     def find(self):
         pass
