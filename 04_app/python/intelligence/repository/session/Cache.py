@@ -9,6 +9,7 @@
 class Cache:
 
     _singleton = None
+    storage = []
 
     def __init__(self, *args, **kwargs):
         pass
