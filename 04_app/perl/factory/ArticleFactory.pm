@@ -1,3 +1,4 @@
+#!/usr/bin/perl
 #
 # Article Factory.
 #

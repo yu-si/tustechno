@@ -1,7 +1,8 @@
+#!/usr/bin/perl
 #
 # Atrticle Main
 #
-#
+# ppm install XML-RSS
 #
 
 use strict;
@@ -19,9 +20,11 @@ print "\r\n";
 
 # Get an article
 use service::ArticleService;
+{
 my $service = service::ArticleService->new();
 my $article = $service->retrieve();
 my $url = $article->url();
+
 
 # Connect to web pages
 use service::HttpBuilder;
@@ -33,10 +36,18 @@ if ($ret =~ /([A-Z])/) {
     print "$1\n";
 }
 
+
 #my @word = split(/:/, $ret);
 #print "@word\n";
 
 # Output an article
 use service::FileOutputer;
+
 my $outputer = service::FileOutputer->new();
 $outputer->output($ret)
+}
+
+# RSS parse
+use service::FeedParser;
+my $parser = service::FeedParser->new();
+$parser->parse()
