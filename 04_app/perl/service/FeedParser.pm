@@ -19,11 +19,9 @@ sub new {
 }
 
 sub parse {
+  my ($this, $url) = @_;
 
-  use XML::Feed;
-  use URI;
-  use Encode;
-  my $feed = XML::Feed->parse( URI->new('http://b.hatena.ne.jp/t/webservice?sort=hot&threshold=&mode=rss'))
+  my $feed = XML::Feed->parse( URI->new($url))
         or die XML::Feed->errstr;
 
   for my $entry ($feed->entries){

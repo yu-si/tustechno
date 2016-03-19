@@ -3,8 +3,10 @@
 # Atrticle Main
 #
 # ppm install XML-RSS
+# ppm install Catalyst-Runtime
 #
 
+use Catalyst qw/-Debug/;
 use strict;
 use warnings;
 use utf8;
@@ -37,9 +39,6 @@ if ($ret =~ /([A-Z])/) {
 }
 
 
-#my @word = split(/:/, $ret);
-#print "@word\n";
-
 # Output an article
 use service::FileOutputer;
 
@@ -48,6 +47,10 @@ $outputer->output($ret)
 }
 
 # RSS parse
+use service::FeedService;
+my $service = service::FeedService->new();
+my $url = $service->retrieve();
+
 use service::FeedParser;
 my $parser = service::FeedParser->new();
-$parser->parse()
+$parser->parse($url)
