@@ -8,6 +8,10 @@
 package Article::Web::Model::const::Config;
 use utf8;
 
+  my $eucjp = "eucjp";
+  my $cp932 = "cp932";
+  my $utf8 = "utf8";
+  my $shiftjis = "shiftjis";
 
 sub new {
   my $class = shift;

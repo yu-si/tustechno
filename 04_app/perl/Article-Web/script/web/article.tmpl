@@ -1,8 +1,42 @@
 <html>
-<head><title>Test Template</title></head>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <title>Test Template</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!--<link rel="stylesheet" type="text/css" href=".web/assets/bootstrap/css/bootstrap.min.css">-->
+</head>
 <body>
-<h1><TMPL_VAR NAME=PAGE_TITLE></h1>
+<h1 class="col-md-offset-1">
+  <span class="small glyphicon glyphicon-pencil"/>
+  <TMPL_VAR NAME=PAGE_TITLE></h1>
+ <div class=" col-md-offset-1 col-md-10">
+ <TMPL_LOOP NAME=FEEDS>
+   <div class="panel panel-default">
+     <div class="panel-heading">
+       <div class="panel-title">
+       <TMPL_VAR NAME=TITLE>
+       </div>
+     </div>
+     <div class="panel-body">
+       <div class="col-md-2">Content</div>
+       <div class="col-md-6 col-md-offset-2"><TMPL_VAR NAME=CONTENT></div>
+     </div>
+     <div class="panel-footer">
+       <div class="col-md-2">TimeStamp</div><div class="col-md-6"><TMPL_VAR NAME=TIMESTAMP></div>
+     </div>
+   </div>
+  </TMPL_LOOP>
+</div>
+<TMPL_VAR NAME=TEST>
 <p>
-<TMPL_VAR NAME=FEED>
+<TMPL_LOOP NAME=VALUES>
+  <TMPL_IF NAME="__last__">
+    Value: <TMPL_VAR NAME=VALUE><br>
+    </TMPL_IF>
+ </TMPL_LOOP>
+</p>
 </body>
 </html>

@@ -2,7 +2,9 @@ package Article::Web::View::ArticleViewer;
 
 use strict;
 use base 'Catalyst::View::TT';
+use utf8;
 use HTML::Template;
+binmode STDOUT, ":utf8";
 
 =head1 NAME
 
@@ -12,7 +14,10 @@ Article::Web::View::ArticleViewer - TT View Component
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
 
-	my $template = HTML::Template->new(filename => 'web/article.tmpl');
+	my $template = HTML::Template->new(
+    filename => 'web/article.tmpl',
+    open_mode => '<:encoding(utf8)'
+    );
 
 
  # RSS parse
@@ -23,11 +28,23 @@ sub index :Path :Args(0) {
 	use Article::Web::Model::service::FeedParser;
 	my $parser = Article::Web::Model::service::FeedParser->new();
 
-	my $feed = $parser->parse($url);
+	my @feeds = $parser->parse($url);
 
-	#print $parser->parse($url);
-	$template->param(PAGE_TITLE => "Article and Feed Gather.");
-	$template->param(FEED => $feed);
+  $template->param(PAGE_TITLE => "Article and Feed Gather.");
+
+  my @values = ();
+  my %row;
+  for (my $count = 1; $count  < 10;$count++){
+    $row{VALUE} = "test";
+    push(@values, \%row);
+  }
+  $template->param(VALUES => \@values);
+  $template->param(FEEDS => \@feeds);
+
+      for (my $i = 1 ; $i <= @feeds; $i++) {
+        #my $feed = "@feeds[$i]";
+        my $feed = pop(@feeds);
+      }
 
 	print "Content-Type: text/html\n\n", $template->output;
 	$c->response->body($template->output);

@@ -4,6 +4,8 @@
 #
 # ppm install XML-RSS
 # ppm install Catalyst-Runtime
+# ppm install Catalyst::Devel
+# ppm install Catalyst::View::TT
 #
 
 use Catalyst qw/-Debug/;
